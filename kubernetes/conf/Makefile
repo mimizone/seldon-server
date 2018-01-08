@@ -18,8 +18,8 @@ BUILD_VERSIONS_GENERATED_FILE=$(SELDON_HOME)/build/build_versions_generated
 #
 # Example seldon server service types. Change to the kubernetes type you need.
 #
-#SELDON_SERVICE_TYPE=NodePort
-SELDON_SERVICE_TYPE=LoadBalancer
+SELDON_SERVICE_TYPE=NodePort
+#SELDON_SERVICE_TYPE=LoadBalancer
 
 SELDON_SERVER_SERVICE_TYPE=NodePort
 
@@ -48,7 +48,7 @@ create_sparkui_secret:spark.htpasswd
 
 
 
-# 
+#
 # Default Resources (edit for your own needs)
 #
 SELDON_SERVER_RESOURCES="requests":{ "memory" : "3Gi" },"limits":{ "memory" : "3Gi"}
