@@ -129,6 +129,10 @@ function start_glusterfs_service {
     fi
 }
 
+function start_nfs_volume {
+    echo 'Creating NFS persistent volume'
+    kubectl create -f ${STARTUP_DIR}/../conf/nfs.json
+}
 
 function setup_influxdb {
 
@@ -155,7 +159,8 @@ function seldon_up {
 
     startup_msg
 
-    start_glusterfs_service
+    #start_glusterfs_service
+    start_nfs_volume
 
     start_core_services
 
@@ -175,4 +180,3 @@ function get_non_running_states {
 }
 
 seldon_up "$@"
-
