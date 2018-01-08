@@ -1,0 +1,44 @@
+{
+    "kind": "PersistentVolume",
+    "apiVersion": "v1",
+    "metadata": {
+	"name": "host-volume",
+	"labels": {
+	    "service" : "seldon"
+	}
+    },
+    "spec": {
+        "capacity": {
+            "storage": "1024Gi"
+        },
+        "accessModes": [
+            "ReadWriteOnce"
+        ],
+        "persistentVolumeReclaimPolicy": "Retain",
+        "nfs": {
+          "server": "172.30.82.74",
+          "path": "/mnt/md0/k8s/volumes/jupyter-workbook",
+          "readOnly": false
+        }
+    }
+}
+{
+    "kind": "PersistentVolumeClaim",
+    "apiVersion": "v1",
+    "metadata": {
+        "name": "seldon-claim",
+	"labels": {
+	    "service" : "seldon"
+	}
+    },
+    "spec": {
+        "accessModes": [
+            "ReadWriteOnce"
+        ],
+        "resources": {
+            "requests": {
+                "storage": "1024Gi"
+            }
+        }
+    }
+}
